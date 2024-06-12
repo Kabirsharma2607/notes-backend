@@ -1,6 +1,6 @@
 const express = require("express");
 
-const { User } = require("../models/userModel.js");
+const User = require("../models/userModel.js");
 const zod = require("zod");
 
 const usersRouter = express.Router();
@@ -26,7 +26,7 @@ usersRouter.post("/signup", async (req, res) => {
     const { email, password, firstName, lastName } = body;
     console.log(email + " " + password);
     const existingUser = await User.findOne({
-      email: body.email,
+      email,
     });
     if (existingUser) {
       return res.json({
@@ -48,6 +48,7 @@ usersRouter.post("/signup", async (req, res) => {
     });
   } catch (error) {
     console.log(error.message);
+    return res.status(400);
   }
 });
 
