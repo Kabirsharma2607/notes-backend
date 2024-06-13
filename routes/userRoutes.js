@@ -1,9 +1,10 @@
-const express = require("express");
+import express from "express";
+import jwt from "jsonwebtoken";
+import { z as zod } from "zod";
+import User from "../models/userModel.js";
+import dotenv from "dotenv";
 
-const User = require("../models/userModel.js");
-const zod = require("zod");
-const jwt = require("jsonwebtoken");
-require("dotenv").config();
+dotenv.config();
 
 const usersRouter = express.Router();
 
@@ -109,6 +110,4 @@ usersRouter.get("/signin", async (req, res) => {
   }
 });
 
-module.exports = {
-  usersRouter,
-};
+export default usersRouter;

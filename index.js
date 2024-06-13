@@ -1,10 +1,12 @@
-const express = require("express");
-const { mainRouter } = require("./routes");
-const { connectToDatabase } = require("./db/db");
+import express, { json } from "express";
+import mainRouter from "./routes/index.js";
+import connectToDatabase from "./db/db.js";
 connectToDatabase();
+import cors from "cors";
 
 const app = express();
-app.use(express.json({ urlencoded: false }));
+app.use(cors());
+app.use(json({ urlencoded: false }));
 
 app.use("/api/v1", mainRouter);
 
