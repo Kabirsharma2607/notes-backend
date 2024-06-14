@@ -15,15 +15,14 @@ const noteSchema = new mongoose.Schema({
     type: String,
   },
   status: {
-    type: Boolean,
-    default: false,
+    type: String,
+    default: "Not yet completed",
   },
   image: {
     type: String,
   },
   date: {
-    type: Date,
-    default: Date.now,
+    type: String,
   },
 });
 
